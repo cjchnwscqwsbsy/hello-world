@@ -5,4 +5,6 @@ var dataSource = [
     {'编号':'045', '姓名':'小明2', '学校':'苏州科技大学'}
 ];
 
-ro_table.createTable(dataSource);
+var dataColumns = ['编号','姓名','学校'];
+
+ro_table.createTable(dataSource,dataColumns);

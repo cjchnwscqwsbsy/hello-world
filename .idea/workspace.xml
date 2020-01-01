@@ -2,13 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="09745822-d756-4fbd-94bd-540103b14a46" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/lib_table.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/table.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/table.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/table.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/lib_table.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/lib_table.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/table.css" beforeDir="false" afterPath="$PROJECT_DIR$/lib/lib_table.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/table.html" beforeDir="false" afterPath="$PROJECT_DIR$/table.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/table.js" beforeDir="false" afterPath="$PROJECT_DIR$/table.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -80,7 +79,7 @@
       <updated>1511149546376</updated>
       <workItem from="1511149547819" duration="168000" />
       <workItem from="1577782883651" duration="258000" />
-      <workItem from="1577844305826" duration="5276000" />
+      <workItem from="1577844305826" duration="8841000" />
     </task>
     <servers />
   </component>
