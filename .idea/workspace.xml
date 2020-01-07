@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="09745822-d756-4fbd-94bd-540103b14a46" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/lib_table.css" beforeDir="false" afterPath="$PROJECT_DIR$/lib/lib_table.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/lib_table.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/lib_table.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/table.html" beforeDir="false" afterPath="$PROJECT_DIR$/table.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -84,7 +87,12 @@
       <workItem from="1577782883651" duration="258000" />
       <workItem from="1577844305826" duration="13807000" />
       <workItem from="1578129433099" duration="7244000" />
-      <workItem from="1578274433987" duration="7121000" />
+      <workItem from="1578274433987" duration="7925000" />
+      <workItem from="1578295309378" duration="81000" />
+      <workItem from="1578315591934" duration="149000" />
+      <workItem from="1578359409766" duration="19000" />
+      <workItem from="1578359678518" duration="1779000" />
+      <workItem from="1578365171040" duration="823000" />
     </task>
     <servers />
   </component>
