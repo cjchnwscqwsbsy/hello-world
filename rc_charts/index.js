@@ -37,8 +37,10 @@ function getExpress(treeD){
     return ret;
 }
 
-var res = getExpress(rootData);
-console.log('result: ', res)
+function
+
+// var res = getExpress(rootData);
+// console.log('result: ', res)
 
 
 
