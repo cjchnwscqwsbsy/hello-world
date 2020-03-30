@@ -2,12 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="09745822-d756-4fbd-94bd-540103b14a46" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scrollbar/scrollbar.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/lib_table.css" beforeDir="false" afterPath="$PROJECT_DIR$/lib/lib_table.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/lib_table.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/lib_table.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/table.html" beforeDir="false" afterPath="$PROJECT_DIR$/table.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/lib_table.css" beforeDir="false" afterPath="$PROJECT_DIR$/lib/table/lib_table.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/lib_table.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/table/lib_table.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/table.html" beforeDir="false" afterPath="$PROJECT_DIR$/table/table.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/table.js" beforeDir="false" afterPath="$PROJECT_DIR$/table/table.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,8 +21,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="JavaScript File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -46,7 +46,12 @@
     <property name="settings.editor.selected.configurable" value="Settings.JavaScript" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\workplace\prototype\lib" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\workplace\prototype\lib\table" />
+      <recent name="E:\workplace\prototype\table" />
       <recent name="E:\workplace\prototype\lib" />
     </key>
   </component>
@@ -92,7 +97,9 @@
       <workItem from="1578315591934" duration="149000" />
       <workItem from="1578359409766" duration="19000" />
       <workItem from="1578359678518" duration="1779000" />
-      <workItem from="1578365171040" duration="823000" />
+      <workItem from="1578365171040" duration="952000" />
+      <workItem from="1578380097554" duration="163000" />
+      <workItem from="1578381469449" duration="1447000" />
     </task>
     <servers />
   </component>
