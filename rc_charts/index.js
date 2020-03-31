@@ -66,14 +66,28 @@ function getTreeD(expression){
                     temp1.push(ele);
                 }
             }
-        }   
+        }
     });
     //将剩余的操作符入栈
     while(temp1.length){
         temp2.push(temp1.pop());
     }
+    console.log('temp2: ', temp2);
     //将逆波兰式转化为二叉树
-    
+    var root = [];
+    while(temp2.length){
+        var item = temp2.shift();
+        var node = {value:'',children:[]};
+        node.value = item;
+        if(isOperator(item)){
+            node.children.push(root.pop());
+            node.children.push(root.pop());
+            root.push(node);
+        } else {
+            root.push(node);
+        }
+    }
+    return root.pop();
 }
 
 
