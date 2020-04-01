@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 var rootData = {
     value:'+',
     children:[{
@@ -187,5 +185,4 @@ function getExpress(treeD){
 //     .attr('r', function(d){
 //         return d;
 //     })
->>>>>>> fd8b62655a93bbd9a4f25e9792b51d8a9b06ef77
 
