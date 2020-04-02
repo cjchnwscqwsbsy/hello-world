@@ -1,12 +1,10 @@
-function dataTyped(value) {
-    return Object.prototype.toString.call(value).slice(8, -1);
-}
-
-function throwError() {
-    throw new Error("columns is not an array!");
-}
-
-const ro_table = (function () {
+;(function () {
+    function dataTyped(value) {
+        return Object.prototype.toString.call(value).slice(8, -1);
+    }
+    function throwError() {
+        throw new Error("columns is not an array!");
+    }
     function _createHeader(columns) {
         if (dataTyped(columns) !== 'Array') {
             throwError();
@@ -112,11 +110,19 @@ const ro_table = (function () {
         tableBox.addEventListener('scroll', () => scrollListen(tableBox));
         leftCol.addEventListener('scroll', () => scrollListen(leftCol));
     }
-    return {
+    var ro_table = {
         createTable: function (data,columns) {
             _createTable(data,columns)
         }
     };
+    if(typeof module !== 'undefined' && module.exports){
+        module.exports = ro_table;
+    } else if(typeof define === 'function'){
+        define(function(){
+            return ro_table;
+        });
+    } else {
+        var _global = (function(){ return this || (0, eval)('this'); }());
+        !('ro_table' in _global) && (_global.ro_table = ro_table);
+    }
 })();
-
-window.ro_table = ro_table;
