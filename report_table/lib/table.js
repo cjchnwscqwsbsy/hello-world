@@ -51,6 +51,7 @@
                 _td.setAttribute('class','rc-table-cell')
                 _tr.appendChild(_td)
             }
+            _tr.setAttribute('class','rc-table-row')
             _tbody.appendChild(_tr);
         }
         _tbody.setAttribute('class','rc-table-body');
