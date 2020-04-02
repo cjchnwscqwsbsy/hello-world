@@ -1,0 +1,6 @@
+.rc-table{
+    border-collapse:collapse;
+}
+.rc-table-cell{
+    border: 1px solid red !important;
+}
