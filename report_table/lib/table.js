@@ -31,10 +31,11 @@
         for(let col = 0; col < headers.length; col ++){
             const _th = document.createElement('th')
             _th.innerText = headers[col]['name']
+            _th.setAttribute('class','rc-table-cell')
             _tr.appendChild(_th)
         }
         _thead.appendChild(_tr)
-        _thead.setAttribute('class','rc-table-head');
+        _thead.setAttribute('class','rc-table-head')
         return _thead
     }
     function _createBody(body,headers){
@@ -42,11 +43,12 @@
             _throwError('datasource is not an array!')
         }
         const _tbody = document.createElement('tbody')
-        for(let row = 0; row < body.length; row ++){  
+        for(let row = 0; row < body.length; row ++){
             const _tr = document.createElement('tr')
             for(let col = 0; col < headers.length; col ++){
                 const _td = document.createElement('td')
-                _td.innerText = headers[col]['name']
+                _td.innerText = body[row][headers[col]['code']]
+                _td.setAttribute('class','rc-table-cell')
                 _tr.appendChild(_td)
             }
             _tbody.appendChild(_tr);

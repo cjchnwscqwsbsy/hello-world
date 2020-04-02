@@ -6,14 +6,21 @@ var dataSource =
     "headers": [
       {
         "id": "1",
-        "name": "项目"
+        "name": "项目",
+        "code": "project"
       },
       {
         "id": "2",
-        "name": "行次"
+        "name": "行次",
+        "code": "rowId"
       }
     ],
-    "subjects": []
+    "subjects": [{
+        "id": "LRB1",
+        "project": "一、营业收入",
+        "rowId": "1",
+        "value": ["",""]
+      }]
 };
 
 //原数据，根节点id
