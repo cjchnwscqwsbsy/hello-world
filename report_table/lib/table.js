@@ -37,7 +37,9 @@
         const _tr = document.createElement('tr')
         for(let col = 0; col < headers.length; col ++){
             const _th = document.createElement('th')
-            _th.innerText = headers[col]['name']
+            const _input = document.createElement('input')
+            _input.setAttribute('value',headers[col]['name'])
+            _th.appendChild(_input)
             _th.setAttribute('class','rc-table-cell')
             _tr.appendChild(_th)
         }
@@ -55,10 +57,15 @@
                 const _tr = document.createElement('tr')
                 for(let col = 0; col < headers.length; col ++){
                     const _td = document.createElement('td')
-                    if(headers[col]['code'] !== 'project' && headers[col]['code'] !== 'rowId'){
-                        _td.innerText = body[row]['value'][col - 2][headers[col]['code']]
-                    }else{
+                    const _input = document.createElement('input')
+                    if(headers[col]['code'] === 'rowId'){
                         _td.innerText = body[row][headers[col]['code']]
+                    }else if(headers[col]['code'] === 'project'){
+                        _input.setAttribute('value',headers[col]['code'])
+                        _td.appendChild(_input)
+                    }else{
+                        _input.setAttribute('value',body[row]['value'][col - 2][headers[col]['code']])
+                        _td.appendChild(_input)
                     }
                     _td.setAttribute('class','rc-table-cell')
                     _tr.appendChild(_td)
