@@ -6,6 +6,12 @@
     function _throwError(info){
         throw new Error(info)
     }
+    function _createCaption(data){
+        const _caption = document.createElement('caption')
+        _caption.innerHTML = data['name']
+        _caption.setAttribute('class','rc-table-caption')
+        return _caption
+    }
     function _createColgroup(headers){
         if(_getType(headers) !== 'Array'){
             _throwError('table headers is not an array!')
@@ -57,13 +63,23 @@
         _tbody.setAttribute('class','rc-table-body');
         return _tbody;
     }
+    function _createPlusOpt(tbBox){
+        const _rt = document.createElement('span');
+        const _lb = document.createElement('span');
+        _rt.setAttribute('class','rc-table-plus rc-table-rt')
+        _lb.setAttribute('class','rc-table-plus rc-table-lb')
+        tbBox.appendChild(_rt)
+        tbBox.appendChild(_lb)
+    }
     function _createTable(data,root){
         const rootCta = document.getElementById(root)
         const tbCta = document.createElement('div')
         const tbBox = document.createElement('table')
+        tbBox.appendChild(_createCaption(data))
         tbBox.appendChild(_createColgroup(data['headers']))
         tbBox.appendChild(_createHeader(data['headers']))
         tbBox.appendChild(_createBody(data['subjects'], data['headers']))
+        _createPlusOpt(tbBox)
         tbCta.appendChild(tbBox)
         rootCta.appendChild(tbCta)
         tbCta.setAttribute('class','rc-tbcta');
