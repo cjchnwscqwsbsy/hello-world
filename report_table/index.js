@@ -15,12 +15,7 @@ var dataSource =
         "code": "rowId"
       }
     ],
-    "subjects": [{
-        "id": "LRB1",
-        "project": "一、营业收入",
-        "rowId": "1",
-        "value": []
-      }]
+    "subjects": []
 };
 
 //原数据，根节点id

@@ -1,6 +1,6 @@
 ;(function(){
     'use strict'
-    let _this = null;
+    let _this = null
     function _getType(value){
         return Object.prototype.toString.call(value).slice(8, -1)
     }
@@ -63,14 +63,14 @@
                 _tr.appendChild(_td)
             }
             _tr.setAttribute('class','rc-table-row')
-            _tbody.appendChild(_tr);
+            _tbody.appendChild(_tr)
         }
-        _tbody.setAttribute('class','rc-table-body');
-        tbBox.appendChild(_tbody);
+        _tbody.setAttribute('class','rc-table-body')
+        tbBox.appendChild(_tbody)
     }
     function _createPlusOpt(tbBox){
-        const _rt = document.createElement('span');
-        const _lb = document.createElement('span');
+        const _rt = document.createElement('span')
+        const _lb = document.createElement('span')
         _rt.setAttribute('class','rc-table-plus rc-table-rt')
         _lb.setAttribute('class','rc-table-plus rc-table-lb')
         _rt.setAttribute('key','rc-rt')
@@ -92,19 +92,19 @@
         _createPlusOpt(_this.tbBox)
         _this.tbCta.appendChild(_this.tbBox)
         _this.rootCta.appendChild(_this.tbCta)
-        _this.tbCta.setAttribute('class','rc-tbcta');
-        _this.tbBox.setAttribute('class','rc-table');
+        _this.tbCta.setAttribute('class','rc-tbcta')
+        _this.tbBox.setAttribute('class','rc-table')
     }
     function randomString(len){
-        const lengt = len || 32;
-        const charts = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz';
-        const maxPos = charts.length;
-        let pwd = '';
+        const lengt = len || 32
+        const charts = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz'
+        const maxPos = charts.length
+        let pwd = ''
         for(let i = 0; i < lengt; i ++){
-            pwd += charts.charAt(Math.floor(Math.random() * maxPos));
+            pwd += charts.charAt(Math.floor(Math.random() * maxPos))
         }
-        return pwd;
-    };
+        return pwd
+    }
     function addCol(){
         let subjects_data = _this.dataSource['subjects'],
             head_data = _this.dataSource['headers'],
@@ -150,15 +150,15 @@
             _this.dataSource = data
             _createTable(_this, data, root)
         }
-    };
+    }
     if(typeof module !== 'undefined' && module.exports){
         module.exports = ro_table
     } else if(typeof define === 'function'){
         define(function(){
-            return ro_table;
+            return ro_table
         })
     } else {
-        const _global = (function(){ return this || (0, eval)('this'); }())
+        const _global = (function(){ return this || (0, eval)('this') }())
         !('_reportTable' in _global) && (_global._reportTable = _reportTable)
     }
 }())
