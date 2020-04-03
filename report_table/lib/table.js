@@ -61,7 +61,7 @@
                     if(headers[col]['code'] === 'rowId'){
                         _td.innerText = body[row][headers[col]['code']]
                     }else if(headers[col]['code'] === 'project'){
-                        _input.setAttribute('value',headers[col]['code'])
+                        _input.setAttribute('value',body[row][headers[col]['code']])
                         _td.appendChild(_input)
                     }else{
                         _input.setAttribute('value',body[row]['value'][col - 2][headers[col]['code']])
@@ -128,7 +128,7 @@
     function addCol(){
         let subjects_data = _this.dataSource['subjects'],
             head_data = _this.dataSource['headers'],
-            new_col = {id:_this.dataSource['headers'].length,name:'ssss',code:randomString(13)}
+            new_col = {id:_this.dataSource['headers'].length,name:'',code:randomString(13)}
         head_data.push(new_col)
         subjects_data = subjects_data.map((sud) => {
             let temp = sud.value.concat({[new_col['code']]:''})
@@ -148,7 +148,7 @@
                 })
         subjects_data.push({
             id:_this.dataSource['headers'].length,
-            project:'ssss',
+            project:'',
             rowId:_this.dataSource['subjects'].length + 1,
             value:new_cols
         })
