@@ -39,6 +39,7 @@
             const _th = document.createElement('th')
             _th.innerText = headers[col]['name']
             _th.setAttribute('class','rc-table-cell')
+            // _th.setAttribute('id',headers[col]['id']);
             _tr.appendChild(_th)
         }
         _thead.appendChild(_tr)
@@ -54,7 +55,11 @@
             const _tr = document.createElement('tr')
             for(let col = 0; col < headers.length; col ++){
                 const _td = document.createElement('td')
-                _td.innerText = body[row][headers[col]['code']]
+                if(headers[col]['code'] !== 'project' && headers[col]['code'] !== 'rowId'){
+                    _td.innerText = body[row]['value'][col - 2][headers[col]['code']]
+                }else{
+                    _td.innerText = body[row][headers[col]['code']]
+                }
                 _td.setAttribute('class','rc-table-cell')
                 _tr.appendChild(_td)
             }
@@ -90,16 +95,30 @@
         _this.rootCta.appendChild(_this.tbCta)
         _this.tbCta.setAttribute('class','rc-tbcta');
         _this.tbBox.setAttribute('class','rc-table');
-        _this.tbBox.setAttribute('id','rc-my');
     }
+    function randomString(len){
+        const lengt = len || 32;
+        const charts = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz';
+        const maxPos = charts.length;
+        let pwd = '';
+        for(let i = 0; i < lengt; i ++){
+            pwd += charts.charAt(Math.floor(Math.random() * maxPos));
+        }
+        return pwd;
+    };
     function addCol(){
-        let head_data = _this.dataSource['headers'];
-        head_data.push({
-            id:_this.dataSource['headers'].length,
-            name:'ssss',
-            code:'sssddd'
+        let subjects_data = _this.dataSource['subjects'],
+            head_data = _this.dataSource['headers'],
+            new_col = {id:_this.dataSource['headers'].length,name:'ssss',code:randomString(6)};
+        head_data.push(new_col)
+        subjects_data = subjects_data.map((sud) => {
+            let temp = sud.value.concat({[new_col['code']]:''})
+            return {
+                ...sud,
+                value:temp
+            }
         })
-        return {..._this.dataSource,headers:head_data}
+        return {..._this.dataSource,headers:head_data,subjects:subjects_data}
     }
     function addRow(){
         let subjects_data = _this.dataSource['subjects'];
@@ -112,8 +131,8 @@
         return {..._this.dataSource,subjects:subjects_data}
     }
     function _plusClick(e){
-        const new_data = e.target.attributes.key.value !== 'rc-rt' ? addRow() : addCol()
-        _updateTable(new_data)
+        _this.dataSource = e.target.attributes.key.value !== 'rc-rt' ? addRow() : addCol()
+        _updateTable(_this.dataSource)
     }
     function _createTable(_this, data,root){
         _this.rootCta = document.getElementById(root)
