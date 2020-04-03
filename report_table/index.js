@@ -19,7 +19,7 @@ var dataSource =
         "id": "LRB1",
         "project": "一、营业收入",
         "rowId": "1",
-        "value": ["",""]
+        "value": []
       }]
 };
 

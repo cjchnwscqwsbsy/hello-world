@@ -102,7 +102,14 @@
         return {..._this.dataSource,headers:head_data}
     }
     function addRow(){
-        
+        let subjects_data = _this.dataSource['subjects'];
+        subjects_data.push({
+            id:_this.dataSource['headers'].length,
+            project:'ssss',
+            rowId:'',
+            value:'sssddd'
+        })
+        return {..._this.dataSource,subjects:subjects_data}
     }
     function _plusClick(e){
         const new_data = e.target.attributes.key.value !== 'rc-rt' ? addRow() : addCol()
