@@ -1,6 +1,7 @@
 ## report_table
 - 通过js操作dom，只要没有被挂载在页面就不会引起渲染，所以不会引起重绘、回流等问题？
 - React/d3等库的key标识如何实现
+- addEventListen 与直接在dom元素上添加的事件有何异同
 
 ## rc_table
 #### (function(){ ... })()，

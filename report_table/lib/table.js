@@ -39,7 +39,6 @@
             const _th = document.createElement('th')
             _th.innerText = headers[col]['name']
             _th.setAttribute('class','rc-table-cell')
-            // _th.setAttribute('id',headers[col]['id']);
             _tr.appendChild(_th)
         }
         _thead.appendChild(_tr)
@@ -109,7 +108,7 @@
     function addCol(){
         let subjects_data = _this.dataSource['subjects'],
             head_data = _this.dataSource['headers'],
-            new_col = {id:_this.dataSource['headers'].length,name:'ssss',code:randomString(6)};
+            new_col = {id:_this.dataSource['headers'].length,name:'ssss',code:randomString(13)}
         head_data.push(new_col)
         subjects_data = subjects_data.map((sud) => {
             let temp = sud.value.concat({[new_col['code']]:''})
@@ -121,17 +120,23 @@
         return {..._this.dataSource,headers:head_data,subjects:subjects_data}
     }
     function addRow(){
-        let subjects_data = _this.dataSource['subjects'];
+        let subjects_data = _this.dataSource['subjects'],
+            head_data = _this.dataSource['headers'],
+            new_cols = head_data.filter(filt => filt.code !== 'rowId' && filt.code !== 'project')
+                .map((item) => {
+                    return {[item['code']]:''}
+                })
         subjects_data.push({
             id:_this.dataSource['headers'].length,
             project:'ssss',
-            rowId:'',
-            value:'sssddd'
+            rowId:_this.dataSource['subjects'].length + 1,
+            value:new_cols
         })
         return {..._this.dataSource,subjects:subjects_data}
     }
     function _plusClick(e){
         _this.dataSource = e.target.attributes.key.value !== 'rc-rt' ? addRow() : addCol()
+        console.log('_this.dataSource: ', _this.dataSource)
         _updateTable(_this.dataSource)
     }
     function _createTable(_this, data,root){
