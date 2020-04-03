@@ -92,9 +92,21 @@
         _this.tbBox.setAttribute('class','rc-table');
         _this.tbBox.setAttribute('id','rc-my');
     }
+    function addCol(){
+        let head_data = _this.dataSource['headers'];
+        head_data.push({
+            id:_this.dataSource['headers'].length,
+            name:'ssss',
+            code:'sssddd'
+        })
+        return {..._this.dataSource,headers:head_data}
+    }
+    function addRow(){
+        
+    }
     function _plusClick(e){
-        console.log('yuyasuiiuasui',e.target.attributes.key.value)
-        _updateTable(_this.dataSource)
+        const new_data = e.target.attributes.key.value !== 'rc-rt' ? addRow() : addCol()
+        _updateTable(new_data)
     }
     function _createTable(_this, data,root){
         _this.rootCta = document.getElementById(root)
