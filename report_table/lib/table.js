@@ -50,19 +50,32 @@
             _throwError('datasource is not an array!')
         }
         const _tbody = document.createElement('tbody')
-        for(let row = 0; row < body.length; row ++){
-            const _tr = document.createElement('tr')
-            for(let col = 0; col < headers.length; col ++){
-                const _td = document.createElement('td')
-                if(headers[col]['code'] !== 'project' && headers[col]['code'] !== 'rowId'){
-                    _td.innerText = body[row]['value'][col - 2][headers[col]['code']]
-                }else{
-                    _td.innerText = body[row][headers[col]['code']]
+        if(body.length){
+            for(let row = 0; row < body.length; row ++){
+                const _tr = document.createElement('tr')
+                for(let col = 0; col < headers.length; col ++){
+                    const _td = document.createElement('td')
+                    if(headers[col]['code'] !== 'project' && headers[col]['code'] !== 'rowId'){
+                        _td.innerText = body[row]['value'][col - 2][headers[col]['code']]
+                    }else{
+                        _td.innerText = body[row][headers[col]['code']]
+                    }
+                    _td.setAttribute('class','rc-table-cell')
+                    _tr.appendChild(_td)
                 }
-                _td.setAttribute('class','rc-table-cell')
-                _tr.appendChild(_td)
+                _tr.setAttribute('class','rc-table-row')
+                _tbody.appendChild(_tr)
             }
-            _tr.setAttribute('class','rc-table-row')
+        }else{
+            const _tr = document.createElement('tr')
+            const _td = document.createElement('td')
+            const _div = document.createElement('div')
+            _div.innerHTML = 'no data'
+            _div.setAttribute('class','rc-table-cell-empty')
+            _td.setAttribute('colspan', headers.length)
+            _td.setAttribute('class','rc-table-cell')
+            _td.appendChild(_div)
+            _tr.appendChild(_td)
             _tbody.appendChild(_tr)
         }
         _tbody.setAttribute('class','rc-table-body')
