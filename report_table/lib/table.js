@@ -121,8 +121,6 @@
         _this.rootCta.appendChild(_this.tbCta)
         _this.tbCta.setAttribute('class','rc-tbcta')
         _this.tbBox.setAttribute('class','rc-table')
-        _this.tabId = randomString(26)
-        _this.tbBox.setAttribute('id',_this.tabId)
     }
     function randomString(len){
         const lengt = len || 32
@@ -172,9 +170,6 @@
         _this.rootCta = document.getElementById(root)
         _this.tbCta = document.createElement('div')
         _updateTable(data)
-        //添加事件
-        const tabId = document.getElementById(_this.tabId)
-        console.log(tabId)
     }
     const _reportTable = {
         createTable: function(data, root){
