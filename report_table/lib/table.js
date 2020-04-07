@@ -61,23 +61,29 @@
                 return cur
             })
         }else{
-            rl_code = 'subjects'
-            rl_data = _this.dataSource['subjects'].map((cur) => {
-                if(cur.value){
-                    return {
-                        ...cur,
-                        value:cur.value.map((cur_v) => {
-                            if(cur_v.includes(e.target.id)){
-                                return {}
-                            }
-                            return cur_v
-                        })
+            const [ra_id, order] = e.target.id.split('_')
+            if(ra_id === 'project'){
+                
+            }else{
+                rl_code = 'subjects'
+                rl_data = _this.dataSource['subjects'].map((cur,index) => {
+                    if(cur.value.length){
+                        return {
+                            ...cur,
+                            value:cur.value.map((cur_item) => {
+                                const v_keys = Object.keys(cur_item)[0]
+                                if(ra_id === v_keys && order == index + 1){
+                                    return {[v_keys]:e.target.value}
+                                }
+                                return cur_item
+                            })
+                        }
                     }
-                }
-                return cur
-            })
+                    return cur
+                })
+            }
         }
-        _this.dataSource = {..._this.dataSource,[rl_code]:[rl_data]}
+        _this.dataSource = {..._this.dataSource,[rl_code]:rl_data}
     }
     function _createBody(tbBox,body,headers){
         if(_getType(body) !== 'Array'){
@@ -162,7 +168,7 @@
     function addCol(){
         let subjects_data = _this.dataSource['subjects'],
             head_data = _this.dataSource['headers'],
-            new_col = {id:_this.dataSource['headers'].length,name:'',code:randomString(13)}
+            new_col = {id:_this.dataSource['headers'].length + 1,name:'',code:randomString(13)}
         head_data.push(new_col)
         subjects_data = subjects_data.map((sud) => {
             let temp = sud.value.concat({[new_col['code']]:''})

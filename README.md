@@ -4,6 +4,7 @@
 - addEventListen 与直接在dom元素上添加的事件有何异同
 - random函数生成随机数相同的机率
 - 搭建es6转es5环境
+- JS中的(强制)类型转换
 
 ## rc_table
 #### (function(){ ... })()，
