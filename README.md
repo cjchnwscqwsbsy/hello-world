@@ -2,6 +2,7 @@
 - 通过js操作dom，只要没有被挂载在页面就不会引起渲染，所以不会引起重绘、回流等问题？
 - React/d3等库的key标识如何实现
 - addEventListen 与直接在dom元素上添加的事件有何异同
+- random函数生成随机数相同的机率
 
 ## rc_table
 #### (function(){ ... })()，
@@ -41,3 +42,16 @@
 #### Document.createElementNS()
 
 #### line-height(height)
+
+
+#### 事件委托
+##### 原理
+     事件冒泡
+##### 优点
+     - 减少事件注册，大量减少内存占用---浏览器重绘重排
+     - 新增元素实现动态绑定事件
+##### 适合用事件委托的事件
+     click，mousedown，mouseup，keydown，keyup，keypress
+##### 实现对onchange事件代理
+     onfocusout 实现 onblur事件， onblur事件不支持冒泡
+##### React事件机制

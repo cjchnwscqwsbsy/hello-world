@@ -39,13 +39,18 @@
             const _th = document.createElement('th')
             const _input = document.createElement('input')
             _input.setAttribute('value',headers[col]['name'])
+            _input.setAttribute('id','th'+randomString(30))
             _th.appendChild(_input)
             _th.setAttribute('class','rc-table-cell')
+            _input.onchange = _handleCellChange
             _tr.appendChild(_th)
         }
         _thead.appendChild(_tr)
         _thead.setAttribute('class','rc-table-head')
         tbBox.appendChild(_thead)
+    }
+    function _handleCellChange(e){
+        console.log(e)
     }
     function _createBody(tbBox,body,headers){
         if(_getType(body) !== 'Array'){
@@ -67,6 +72,8 @@
                         _input.setAttribute('value',body[row]['value'][col - 2][headers[col]['code']])
                         _td.appendChild(_input)
                     }
+                    _input.setAttribute('id','td'+randomString(30))
+                    _input.onchange = _handleCellChange
                     _td.setAttribute('class','rc-table-cell')
                     _tr.appendChild(_td)
                 }
@@ -114,6 +121,8 @@
         _this.rootCta.appendChild(_this.tbCta)
         _this.tbCta.setAttribute('class','rc-tbcta')
         _this.tbBox.setAttribute('class','rc-table')
+        _this.tabId = randomString(26)
+        _this.tbBox.setAttribute('id',_this.tabId)
     }
     function randomString(len){
         const lengt = len || 32
@@ -163,6 +172,9 @@
         _this.rootCta = document.getElementById(root)
         _this.tbCta = document.createElement('div')
         _updateTable(data)
+        //添加事件
+        const tabId = document.getElementById(_this.tabId)
+        console.log(tabId)
     }
     const _reportTable = {
         createTable: function(data, root){
