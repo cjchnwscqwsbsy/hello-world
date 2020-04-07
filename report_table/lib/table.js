@@ -39,7 +39,7 @@
             const _th = document.createElement('th')
             const _input = document.createElement('input')
             _input.setAttribute('value',headers[col]['name'])
-            _input.setAttribute('id','th'+randomString(30))
+            _input.setAttribute('id',headers[col]['code']+'_'+'col')
             _th.appendChild(_input)
             _th.setAttribute('class','rc-table-cell')
             _input.onchange = _handleCellChange
@@ -50,7 +50,34 @@
         tbBox.appendChild(_thead)
     }
     function _handleCellChange(e){
-        console.log(e)
+        console.log(e, e.target.id, e.target.value)
+        let rl_data = null, rl_code = null;
+        if(e.target.id.includes('col')){
+            rl_code = 'headers'
+            rl_data = _this.dataSource['headers'].map((cur) => {
+                if(e.target.id.includes(cur.code)){
+                    return {...cur,name:e.target.value}
+                }
+                return cur
+            })
+        }else{
+            rl_code = 'subjects'
+            rl_data = _this.dataSource['subjects'].map((cur) => {
+                if(cur.value){
+                    return {
+                        ...cur,
+                        value:cur.value.map((cur_v) => {
+                            if(cur_v.includes(e.target.id)){
+                                return {}
+                            }
+                            return cur_v
+                        })
+                    }
+                }
+                return cur
+            })
+        }
+        _this.dataSource = {..._this.dataSource,[rl_code]:[rl_data]}
     }
     function _createBody(tbBox,body,headers){
         if(_getType(body) !== 'Array'){
@@ -72,7 +99,7 @@
                         _input.setAttribute('value',body[row]['value'][col - 2][headers[col]['code']])
                         _td.appendChild(_input)
                     }
-                    _input.setAttribute('id','td'+randomString(30))
+                    _input.setAttribute('id',headers[col]['code']+'_'+body[row]['rowId'] +'_'+ 'row')
                     _input.onchange = _handleCellChange
                     _td.setAttribute('class','rc-table-cell')
                     _tr.appendChild(_td)

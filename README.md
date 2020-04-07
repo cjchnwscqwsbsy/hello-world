@@ -3,6 +3,7 @@
 - React/d3等库的key标识如何实现
 - addEventListen 与直接在dom元素上添加的事件有何异同
 - random函数生成随机数相同的机率
+- 搭建es6转es5环境
 
 ## rc_table
 #### (function(){ ... })()，
