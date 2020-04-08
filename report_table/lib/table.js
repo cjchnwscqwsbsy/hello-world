@@ -94,6 +94,10 @@
         }
         _this.dataSource = {..._this.dataSource,[rl_code]:rl_data}
     }
+    function _handleCellChangeMy(a,b,v){
+        console.log('-----------------')
+        console.log(a,b,v)
+    }
     function _createBody(tbBox,body,headers){
         if(_getType(body) !== 'Array'){
             _throwError('datasource is not an array!')
