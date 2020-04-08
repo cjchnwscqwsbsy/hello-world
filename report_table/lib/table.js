@@ -20,10 +20,11 @@
         const _colgroup = document.createElement('colgroup')
         for(let col = 0; col < headers.length; col ++){
             const _col = document.createElement('col')
-            if(headers[col]['id'] !== '1'){
-                // _col.style = 'width:50px'
-            }else{
-                // _col.style = 'width:200px'
+            if(headers[col]['code'] === 'rowId'){
+                _col.style = 'width:50px'
+            }
+            if(headers[col]['code'] === 'project'){
+                _col.style = 'width:270px'
             }
             _colgroup.appendChild(_col)
         }
@@ -37,12 +38,16 @@
         const _tr = document.createElement('tr')
         for(let col = 0; col < headers.length; col ++){
             const _th = document.createElement('th')
-            const _input = document.createElement('input')
-            _input.setAttribute('value',headers[col]['name'])
-            _input.setAttribute('id',headers[col]['code']+'_'+'col')
-            _th.appendChild(_input)
+            if(headers[col]['code'] !== 'project' && headers[col]['code'] !== 'rowId'){
+                const _input = document.createElement('input')
+                _input.setAttribute('value',headers[col]['name'])
+                _input.setAttribute('id',headers[col]['code']+'_'+'col')
+                _input.onchange = _handleCellChange
+                _th.appendChild(_input)
+            }else{
+                _th.innerText = headers[col]['name']
+            }
             _th.setAttribute('class','rc-table-cell')
-            _input.onchange = _handleCellChange
             _tr.appendChild(_th)
         }
         _thead.appendChild(_tr)
@@ -100,17 +105,18 @@
                 for(let col = 0; col < headers.length; col ++){
                     const _td = document.createElement('td')
                     const _input = document.createElement('input')
-                    if(headers[col]['code'] === 'rowId'){
-                        _td.innerText = body[row][headers[col]['code']]
-                    }else if(headers[col]['code'] === 'project'){
+                    if(headers[col]['code'] !== 'project'){
+                        if(headers[col]['code'] !== 'rowId'){
+                            _td.innerText = body[row]['value'][col - 2][headers[col]['code']]
+                        }else{
+                            _td.innerText = body[row][headers[col]['code']]
+                        }
+                    }else{
                         _input.setAttribute('value',body[row][headers[col]['code']])
                         _td.appendChild(_input)
-                    }else{
-                        _input.setAttribute('value',body[row]['value'][col - 2][headers[col]['code']])
-                        _td.appendChild(_input)
+                        _input.setAttribute('id',headers[col]['code']+'_'+body[row]['rowId'] +'_'+ 'row')
+                        _input.onchange = _handleCellChange
                     }
-                    _input.setAttribute('id',headers[col]['code']+'_'+body[row]['rowId'] +'_'+ 'row')
-                    _input.onchange = _handleCellChange
                     _td.setAttribute('class','rc-table-cell')
                     _tr.appendChild(_td)
                 }
@@ -158,8 +164,6 @@
         _this.rootCta.appendChild(_this.tbCta)
         _this.tbCta.setAttribute('class','rc-tbcta')
         _this.tbBox.setAttribute('class','rc-table')
-        
-        console.log(_this.dataSource)
     }
     function randomString(len){
         const lengt = len || 32
