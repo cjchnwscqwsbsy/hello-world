@@ -5,7 +5,7 @@
 - random函数生成随机数相同的机率
 - 搭建es6转es5环境
 - JS中的(强制)类型转换
-
+- ES5中for...of遍历数组、类数组、对象、Map&Set
 ## rc_table
 #### (function(){ ... })()，
 

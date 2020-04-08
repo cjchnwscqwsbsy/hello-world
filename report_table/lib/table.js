@@ -62,10 +62,15 @@
             })
         }else{
             const [ra_id, order] = e.target.id.split('_')
+            rl_code = 'subjects'
             if(ra_id === 'project'){
-                
+                rl_data = _this.dataSource['subjects'].map((cur,index) => {
+                    if(e.target.id.includes((index + 1).toString())){
+                        return {...cur,project:e.target.value}
+                    }
+                    return cur;
+                })
             }else{
-                rl_code = 'subjects'
                 rl_data = _this.dataSource['subjects'].map((cur,index) => {
                     if(cur.value.length){
                         return {
@@ -187,7 +192,7 @@
                     return {[item['code']]:''}
                 })
         subjects_data.push({
-            id:_this.dataSource['headers'].length,
+            id:'row_key',
             project:'',
             rowId:_this.dataSource['subjects'].length + 1,
             value:new_cols
