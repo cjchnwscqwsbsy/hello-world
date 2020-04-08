@@ -6,6 +6,7 @@
 - 搭建es6转es5环境
 - JS中的(强制)类型转换
 - ES5中for...of遍历数组、类数组、对象、Map&Set
+- table单元格自适应内容宽高：目前的table无法实现, 通过计算设置colgroup控制列宽
 ## rc_table
 #### (function(){ ... })()，
 

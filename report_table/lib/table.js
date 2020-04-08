@@ -21,9 +21,9 @@
         for(let col = 0; col < headers.length; col ++){
             const _col = document.createElement('col')
             if(headers[col]['id'] !== '1'){
-                _col.style = 'width:50px'
+                // _col.style = 'width:50px'
             }else{
-                _col.style = 'width:200px'
+                // _col.style = 'width:200px'
             }
             _colgroup.appendChild(_col)
         }
@@ -50,7 +50,6 @@
         tbBox.appendChild(_thead)
     }
     function _handleCellChange(e){
-        console.log(e, e.target.id, e.target.value)
         let rl_data = null, rl_code = null;
         if(e.target.id.includes('col')){
             rl_code = 'headers'
@@ -159,6 +158,8 @@
         _this.rootCta.appendChild(_this.tbCta)
         _this.tbCta.setAttribute('class','rc-tbcta')
         _this.tbBox.setAttribute('class','rc-table')
+        
+        console.log(_this.dataSource)
     }
     function randomString(len){
         const lengt = len || 32
@@ -201,7 +202,6 @@
     }
     function _plusClick(e){
         _this.dataSource = e.target.attributes.key.value !== 'rc-rt' ? addRow() : addCol()
-        console.log('_this.dataSource: ', _this.dataSource)
         _updateTable(_this.dataSource)
     }
     function _createTable(_this, data,root){
@@ -209,12 +209,16 @@
         _this.tbCta = document.createElement('div')
         _updateTable(data)
     }
+    function _getData(){
+        return _this.dataSource
+    }
     const _reportTable = {
         createTable: function(data, root){
             _this = this
             _this.dataSource = data
             _createTable(_this, data, root)
-        }
+        },
+        getData: _getData
     }
     if(typeof module !== 'undefined' && module.exports){
         module.exports = ro_table
