@@ -1,36 +1,12 @@
-var rootData = {
-    value:'+',
-    children:[{
-        value:'*',
-        children:[{
-            value:'express1',
-            children:null,
-        },{
-            value:'+',
-            children:[{
-                value:'express2_1',
-                children:null,
-            },{
-                value:'express2_2',
-                children:null,
-            }],
-        }]
-    },{
-        value:'*',
-        children:[{
-            value:'express3',
-            children:null,
-        },{
-            value:'express4',
-            children:null,
-        }]
-    }]
-};
-var opts = ['+','-','/','*'];
-var expressItem = '( ( _express1_ * ( _express21_ + _express22_ ) ) + ( _express3_ * _express4_ ) )';
-var expressItem_origin = [ '(','(','_express1_','*','(','_express21_','+','_express22_',')',')','+','(','_express3_','*','_express4_',')',')' ];
+const expressions = '(Math.abs(#{a.b.c} - #{d.e.f}) * #{g.u.p})'
+const exptarr = ['(','Math.abs(','#{a.b.c}', '-', '#{d.e.f}',')', '*', '#{g.u.p}',')']
+const finalarr = ['(','(','#{a.b.c}', '-绝对值', '#{d.e.f}',')', '*', '#{g.u.p}',')']
 
-// console.log('split expression: ', expressItem.replace(/\s*/g,"").split(/[+,-,*,/,(,)]/))
+/*
+    中缀表达式转后缀表达式
+    后缀表达式转二叉树
+    中、后缀表达式是数组格式(左右括号、表达式项、运算符)
+*/
 
 function getTreeD(expression){
     var temp1 = [], temp2 = [];
@@ -91,9 +67,110 @@ function getTreeD(expression){
 }
 
 
-var resultSuffix = getTreeD(expressItem_origin);
+var resultSuffix = getTreeD(finalarr);
 
 console.log('resultSuffix: ', resultSuffix);
+
+
+
+var rootData = {
+    value:'+',
+    children:[{
+        value:'*',
+        children:[{
+            value:'express1',
+            children:null,
+        },{
+            value:'+',
+            children:[{
+                value:'express2_1',
+                children:null,
+            },{
+                value:'express2_2',
+                children:null,
+            }],
+        }]
+    },{
+        value:'*',
+        children:[{
+            value:'express3',
+            children:null,
+        },{
+            value:'express4',
+            children:null,
+        }]
+    }]
+};
+
+
+// var opts = ['+','-','/','*'];
+// var expressItem = '( ( _express1_ * ( _express21_ + _express22_ ) ) + ( _express3_ * _express4_ ) )';
+// var expressItem_origin = [ '(','(','_express1_','*','(','_express21_','+','_express22_',')',')','+','(','_express3_','*','_express4_',')',')' ];
+
+// console.log('split expression: ', expressItem.replace(/\s*/g,"").split(/[+,-,*,/,(,)]/))
+
+// function getTreeD(expression){
+//     var temp1 = [], temp2 = [];
+//     expression.forEach(ele => {
+//         if(ele.match(/^_(.*)_$/)){
+//             temp2.push(ele);
+//         } else if(isOperator(ele)) {
+//             if('(' === ele){
+//                 temp1.push(ele);
+//             } else if(')' === ele){
+//                 while(temp1.length){
+//                     let op = temp1[temp1.length - 1];
+//                     if(op === '('){
+//                         temp1.pop();
+//                         break;
+//                     } else {
+//                         temp2.push(temp1.pop());
+//                     }
+//                 }
+//             } else {
+//                 while(temp1.length){
+//                     if(temp1[temp1.length - 1] === '('){
+//                         temp1.push(ele);
+//                         break;
+//                     } else if(isGreat(temp1[temp1.length - 1], ele)){
+//                         temp2.push(temp1.pop());
+//                     } else if(isGreat(ele, temp1[temp1.length - 1])){
+//                         temp1.push(ele);
+//                         break;
+//                     }
+//                 }
+//                 if(!temp1.length){
+//                     temp1.push(ele);
+//                 }
+//             }
+//         }
+//     });
+//     //将剩余的操作符入栈
+//     while(temp1.length){
+//         temp2.push(temp1.pop());
+//     }
+//     console.log('temp2: ', temp2);
+//     //将逆波兰式转化为二叉树
+//     var root = [];
+//     while(temp2.length){
+//         var item = temp2.shift();
+//         var node = {value:'',children:[]};
+//         node.value = item;
+//         if(isOperator(item)){
+//             node.children.push(root.pop());
+//             node.children.push(root.pop());
+//             root.push(node);
+//         } else {
+//             root.push(node);
+//         }
+//     }
+//     return root.pop();
+// }
+
+
+// var resultSuffix = getTreeD(expressItem_origin);
+
+// console.log('resultSuffix: ', resultSuffix);
 
 
 function isGreat(op1, op2){
@@ -186,6 +263,3 @@ function getExpress(treeD){
 //         return d;
 //     })
 
-const expressions = '(Math.abs(#{a.b.c} - #{d.e.f}) * #{g.u.p})'
-const exptarr = ['(','Math.abs(','#{a.b.c}', '-', '#{d.e.f}',')', '*', '#{g.u.p}',')']
-const finalarr = ['(','(','#{a.b.c}', '-绝对值', '#{d.e.f}',')', '*', '#{g.u.p}',')']
